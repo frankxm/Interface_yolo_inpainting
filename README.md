@@ -1,61 +1,85 @@
-#Détection et suppression automatique d’avions dans les images satellites
 
 
+---
 
+# Détection et Suppression Automatique d'Avions dans les Images Satellites
 
-#Programme exécutable pyqt5 packagé sous Windows
-https://drive.google.com/drive/folders/1ddQhAtdIlmadTS-HKMH3VyulmMJ1E9gg?usp=sharing
-#Programme exécutable pyqt5 packagé sous Linux
-https://drive.google.com/drive/folders/1pnjM3ykEtG59gQHAUvd3X5KOT0qcq727?usp=sharing
+Ce projet utilise YOLOv5 et des techniques de traitement d'images pour détecter, supprimer et remplacer automatiquement des avions dans des images satellites. Il est conçu pour être utilisé avec une interface graphique PyQt5, facilitant l'interaction avec l'utilisateur.
 
+## Liens des Programmes Exécutables
 
+- **Windows** : [Télécharger l'exécutable PyQt5 pour Windows](https://drive.google.com/drive/folders/1ddQhAtdIlmadTS-HKMH3VyulmMJ1E9gg?usp=sharing)
+- **Linux** : [Télécharger l'exécutable PyQt5 pour Linux](https://drive.google.com/drive/folders/1pnjM3ykEtG59gQHAUvd3X5KOT0qcq727?usp=sharing)
 
-#mainapp.py
-Démarrage de l'interface pyqt5
+## Fichiers Principaux
 
-#detect.py
-Inférence à l'aide du modèle entrainé sur les images satellites (best.pt)
+- **`mainapp.py`** : Démarrage de l'interface PyQt5.
+- **`detect.py`** : Inférence avec le modèle entraîné sur les images satellites (`best.pt`).
+- **`inpainting_last.py/inpainting`** : Suppression et remplacement des pixels des avions dans l'image
 
-#Dossier
-##models/
-implique principalement la structure, la définition et l’exportation de modèles. C’est la partie centrale de YOLOv5 et est responsable de la construction et de l’exécution des modèles de réseaux neuronaux.
-##utils/ 
-contient des fonctions auxiliaires impliquant le traitement des données, l'évaluation, la visualisation, les fonctions d'outils, etc., pour aider à optimiser et à simplifier le processus de formation et d'inférence.
-Elles sont essentielles pendant l'utilisation de detect.py
+## Structure des Dossiers
 
-##
-##inference/
-###inference/output
-Stocker l'image apres la prediction
-###inference/output/labels
-Stocker le ficher sortie de la prediction
-#####exemple:
-	aughv_ELLX__1__8640___3780 0.51 489.0 548.0 481 611 548 571 496 484 429 524 102.0 78.0 59.0 D:\python_pycharm\rotation-yolov5-master\mydatas\images\test\aughv_ELLX__1__8640___3780.png inference\output\aughv_ELLX__1__8640___3780.png 640 640
-	
-	Nom d'image+la confiance du rectangle prédit + le point central du rectangle prédit + les quatre sommets du rectangle prédit + la largeur et la hauteur du rectangle prédit + les informations d'angle du rectangle prédit + le chemin de l'image d'origine + le chemin prédit + la largeur et la hauteur de l'image
-###inference/output/labels
-Image du masque de sortie
+### `models/`
+Ce dossier contient la structure, la définition et l'exportation des modèles. Il constitue la partie centrale de YOLOv5 et est responsable de la construction et de l'exécution des modèles de réseaux neuronaux.
 
-##
-##big_images/split_images
-Si la taille de l'image à prédire est trop grande, on le coupe en les petites images et les enregistre ici
+### `utils/`
+Ce dossier contient des fonctions utilitaires pour le traitement des données, l'évaluation, la visualisation et d'autres outils nécessaires pour optimiser le processus de formation et d'inférence. Ces fonctions sont essentielles lors de l'exécution de `detect.py`.
 
-##
-##icons/
-Enregistrer les icones dont l'interface a besoin
+### `inference/`
+#### `output/`
+- **Stocke les images après la prédiction.**
+- **`labels/`** : Contient les fichiers de sortie des prédictions.  
+Exemple de format de sortie :
 
-##
-##inpainting/
-###inpainting/images
-Images satellites prédites qui doivent être restaurées (si l'image d'entrée de prédiction est grande, plusieurs images après recadrage et prédiction sont stockées ici. Si l'image prédite est de taille appropriée, une seule image prédite est stockée ici.)
-###inpainting/mask
-Masques d’images satellites
-###inpainting/result
-Images satellites restaurée
-###inpainting/combinediinpainting
-Grande image après la fusion de plusieurs petites images satellite restaurées
-###inpainting/combinedimages
-Grande image après la fusion de plusieurs petites images satellites prédites
-###inpainting/combinedmasques
-Masque de grande image après la fusion de plusieurs petites images satellite prédites
+    ```
+    aughv_ELLX__1__8640___3780 0.51 489.0 548.0 481 611 548 571 496 484 429 524 102.0 78.0 59.0 D:\python_pycharm\rotation-yolov5-master\mydatas\images\test\aughv_ELLX__1__8640___3780.png inference/output/aughv_ELLX__1__8640___3780.png 640 640
+    ```
 
+    Ce fichier contient :
+    - Nom de l'image
+    - Confiance du rectangle prédit
+    - Point central du rectangle prédit
+    - Quatre sommets du rectangle prédit
+    - Largeur et hauteur du rectangle prédit
+    - Informations d'angle du rectangle prédit
+    - Chemin de l'image d'origine
+    - Chemin de l'image prédite
+    - Largeur et hauteur de l'image
+
+#### `masks/`
+- Contient les masques d’images satellites générés après prédiction.
+
+### `big_images/split_images`
+- Si la taille de l'image à prédire est trop grande, elle est découpée en petites images et stockée ici pour être traitée plus facilement.
+
+### `icons/`
+- Contient les icônes utilisées par l'interface graphique.
+
+### `inpainting/`
+#### `images/`
+- Contient les images satellites qui doivent être restaurées. Si l'image d'entrée est trop grande, elle est découpée en plusieurs images pour une prédiction par morceaux.
+
+#### `mask/`
+- Masques des images satellites avant restauration.
+
+#### `result/`
+- Résultats des images satellites après restauration.
+
+#### `combinedinpainting/`
+- Image grande fusionnée après la restauration des petites images satellites.
+
+#### `combinedimages/`
+- Image grande fusionnée après la prédiction des petites images satellites.
+
+#### `combinedmasks/`
+- Masque d'image grande fusionnée après la prédiction des petites images satellites.
+
+## Entraînement du Modèle YOLOv5 Rotation
+
+Le modèle YOLOv5 Rotation utilisé pour la détection d'objets dans des images satellites avec une approche de détection d'objets en boîte orientée. Pour entraîner votre propre modèle, vous pouvez suivre les instructions disponibles sur ce lien :
+
+- [Entraîner le modèle YOLOv5 Rotation](https://github.com/hukaixuan19970627/yolov5_obb)
+
+---
+
+Cela présente un format structuré et facile à lire pour tout utilisateur qui pourrait explorer ce projet. Vous pouvez ajouter ou modifier des sections selon les besoins.
