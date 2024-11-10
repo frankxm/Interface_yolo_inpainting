@@ -16,6 +16,7 @@ Ce projet utilise YOLOv5 et des techniques de traitement d'images pour détecter
 - **`mainapp.py`** : Démarrage de l'interface PyQt5.
 - **`detect.py`** : Inférence avec le modèle entraîné sur les images satellites (`best.pt`).
 - **`inpainting_last.py/inpainting`** : Suppression et remplacement des pixels des avions dans l'image
+-  **`BDavion.db`**:La base de données SQLite qui est créée après le lancement de l'interface et modifiée après les étapes "prediction" et "suppression".
 
 ## Structure des Dossiers
 
