@@ -82,5 +82,3 @@ Le modèle YOLOv5 Rotation utilisé pour la détection d'objets dans des images 
 - [Entraîner le modèle YOLOv5 Rotation](https://github.com/hukaixuan19970627/yolov5_obb)
 
 ---
-
-Cela présente un format structuré et facile à lire pour tout utilisateur qui pourrait explorer ce projet. Vous pouvez ajouter ou modifier des sections selon les besoins.
