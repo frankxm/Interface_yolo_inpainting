@@ -7,8 +7,18 @@
 Ce projet utilise YOLOv5 et des techniques de traitement d'images pour détecter, supprimer et remplacer automatiquement des avions dans des images satellites. Il est conçu pour être utilisé avec une interface graphique PyQt5, facilitant l'interaction avec l'utilisateur.
 
 ## Demonstration d'interface
-![Interface](https://github.com/frankxm/Interface_yolo_inpainting/raw/main/video/demonstration.mp4)
+###Cliquez sur l'image pour télécharger la vidéo de démonstration
+[![Interface](images_demo/Interface.png)](https://github.com/frankxm/Interface_yolo_inpainting/raw/main/video/demonstration.mp4)
 
+
+###Detection
+![Example Image1](images_demo/Detection.png)
+###Annotation
+![Example Image2](images_demo/Annotation.png)
+###Visualisation 
+![Example Image3](images_demo/Visualisation.png)
+###base de données
+![Example Image4](images_demo/Base de donnee.png)
 
 ## Liens des Programmes Exécutables
 
