@@ -6,6 +6,10 @@
 
 Ce projet utilise YOLOv5 et des techniques de traitement d'images pour détecter, supprimer et remplacer automatiquement des avions dans des images satellites. Il est conçu pour être utilisé avec une interface graphique PyQt5, facilitant l'interaction avec l'utilisateur.
 
+## Demonstration d'interface
+![Interface](https://github.com/frankxm/Interface_yolo_inpainting/raw/main/video/demonstration.mp4)
+
+
 ## Liens des Programmes Exécutables
 
 - **Windows** : [Télécharger l'exécutable PyQt5 pour Windows](https://drive.google.com/drive/folders/1ddQhAtdIlmadTS-HKMH3VyulmMJ1E9gg?usp=sharing)
@@ -81,6 +85,6 @@ Le modèle YOLOv5 Rotation utilisé pour la détection d'objets dans des images 
 
 - [Entraîner le modèle YOLOv5 Rotation](https://github.com/hukaixuan19970627/yolov5_obb)
 
----
+## Source images
 
-Cela présente un format structuré et facile à lire pour tout utilisateur qui pourrait explorer ce projet. Vous pouvez ajouter ou modifier des sections selon les besoins.
+- [Cliquez ici pour obtenir les grandes images et regarder les resultats de suppression](https://drive.google.com/drive/folders/1fxVfwN7UA1wFeUGGyLodHtEEDi3dXJ35?usp=sharing)
